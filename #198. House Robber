@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        // Edge Cases
+        if(n==0) 
+            return 0;
+        if(n==1)
+            return nums[0];
+        
+        // Using DP
+        int v1=nums[0];
+        // Compare first two numbers and store in v2
+        int v2=max(v1,nums[1]); // v2 will always store max
+        
+        // Temporarily we store v2 in temp. Compare v2 and (v1+next element) and store it to v2. v1 will store the previous v2 value i.e. temp value
+        for(int i=2;i<n;i++)
+        {
+            int temp=v2;
+            v2=max(v2,v1+nums[i]);
+            v1=temp;
+        }
+        return v2;
+    }
+};
