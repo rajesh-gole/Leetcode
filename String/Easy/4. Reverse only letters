@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string reverseOnlyLetters(string S) {
+        stack<char> st;
+            for(char c:S)
+            {
+                if(isalpha(c))   // if character only then push. most imp
+                    st.push(c);
+            }
+            string res;
+            for(char c:S) // We'll not iterate through STACK becoz the whole string will be reverse
+            {
+                    if(isalpha(c))
+                    {
+                            res+=st.top();
+                            st.pop();
+                    }
+                    else
+                    {
+                            res+=c; 
+                    }
+            }
+            return res;
+    }
+};
+
+// The isalpha() function checks if ch is an alphabetic character or not 
