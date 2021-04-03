@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> lexicalOrder(int n) {
+        stack<int> st;
+            for(int i=9;i>=1;i--)
+                 if(i<=n)
+                    st.push(i);
+            
+            vector<int> res;
+            while(st.size())
+            {
+                    int temp=st.top();
+                    st.pop();
+                    
+                    res.push_back(temp);
+                    for(int i=9;i>=0;i--)
+                    {
+                            int t=temp*10 + i;
+                            if(t<=n)
+                                st.push(t);
+                    }
+            }
+            return res;
+    }
+};
